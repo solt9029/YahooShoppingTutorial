@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+$(function(){
+	$.ajax({
+		url:"http://wrapperapi.solt9029.com/yahoo/shopping?query=防災グッズ",
+		type:"GET"
+	}).done(function(data){
+		data=JSON.parse(data);
+
+		console.log(data.ResultSet.totalResultsReturned);//apiから返された商品の数
+
+		//apiから返された商品の中からランダムに選ぶ！
+		console.log(Math.floor(Math.random()*data.ResultSet.totalResultsReturned));
+		var rand=Math.floor(Math.random()*data.ResultSet.totalResultsReturned);
+
+		console.log(data.ResultSet[0].Result[rand]);//ランダムに選ばれた商品
+
+		console.log(data.ResultSet[0].Result[rand].Url);//ページのURL
+	});
+});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
